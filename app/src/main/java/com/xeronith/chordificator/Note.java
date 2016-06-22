@@ -49,9 +49,9 @@ class Note {
 
     @Override
     public String toString() {
-        if (!alternativeName.equals(name))
+        /*if (!alternativeName.equals(name))
             return String.format("%s (%s)", this.name, this.alternativeName);
-        else
+        else*/
             return this.name;
     }
 }
