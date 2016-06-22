@@ -6,16 +6,16 @@
     </style>
     <style name="Note">
         <item name="android:textColor">@android:color/white</item>
-        <item name="android:layout_width">25dp</item>
-        <item name="android:layout_height">25dp</item>
+        <item name="android:layout_width">35dp</item>
+        <item name="android:layout_height">35dp</item>
         <item name="android:background">@drawable/background_round</item>
         <item name="android:layout_margin">5dp</item>
         <item name="android:gravity">center</item>
-        <item name="android:textSize">12sp</item>
+        <item name="android:textSize">20sp</item>
     </style>
     <style name="BigNote" parent="Note">
-        <item name="android:layout_width">50dp</item>
-        <item name="android:layout_height">50dp</item>
-        <item name="android:textSize">25sp</item>
+        <item name="android:layout_width">60dp</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:textSize">30sp</item>
     </style>
 </resources>

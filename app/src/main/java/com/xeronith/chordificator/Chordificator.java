@@ -104,4 +104,8 @@ class Chordificator {
 
         return result;
     }
+
+    public static Chord[] getChordTypes() {
+        return Chord.values();
+    }
 }

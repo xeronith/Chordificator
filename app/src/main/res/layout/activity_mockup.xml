@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.xeronith.chordificator.TextViewWithFont
+        app:customFont="marguerite.ttf"
+        android:text="Chordificator"
+        android:gravity="center"
+        android:padding="25dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center">
+
+        <com.xeronith.chordificator.TextViewWithFont
+            app:customFont="BebasNeue.otf"
+            android:id="@+id/textView"
+            android:text="c#"
+            style="@style/Note"
+            android:textAllCaps="true"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:textSize="70sp" />
+
+        <com.xeronith.chordificator.TextViewWithFont
+            android:visibility="gone"
+            app:customFont="fontawesome-webfont.ttf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="\uf1e2"
+            android:textSize="60dp"/>
+
+    </LinearLayout>
+
+    <com.xeronith.chordificator.TextViewWithFont
+        app:customFont="BebasNeue.otf"
+        android:text="Major"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:textSize="50sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        android:gravity="center"
+        android:padding="10dp">
+
+        <TextView style="@style/Note"  android:text="C" />
+        <TextView style="@style/Note"  android:text="D" />
+        <TextView style="@style/Note"  android:text="E" />
+        <TextView style="@style/Note"  android:text="F" />
+        <TextView style="@style/Note"  android:text="G" />
+        <TextView style="@style/Note"  android:text="A" />
+        <TextView style="@style/Note"  android:text="B" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:padding="15dp">
+
+        <TextView style="@style/BigNote" android:text="C" />
+        <TextView style="@style/BigNote" android:text="E" />
+        <TextView style="@style/BigNote" android:text="G" />
+
+    </LinearLayout>
+
+</LinearLayout>
