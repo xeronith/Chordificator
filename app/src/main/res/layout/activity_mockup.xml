@@ -9,6 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:textColor="@color/colorAccent"
         android:padding="@dimen/main_title_padding"
         android:text="Chordificator"
         android:textSize="@dimen/main_title_text_size"
