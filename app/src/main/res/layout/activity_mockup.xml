@@ -6,13 +6,13 @@
     android:orientation="vertical">
 
     <com.xeronith.chordificator.TextViewWithFont
-        app:customFont="marguerite.ttf"
-        android:text="Chordificator"
-        android:gravity="center"
-        android:padding="25dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="30sp" />
+        android:gravity="center"
+        android:padding="@dimen/main_title_padding"
+        android:text="Chordificator"
+        android:textSize="@dimen/main_title_text_size"
+        app:customFont="marguerite.ttf" />
 
     <LinearLayout
         android:layout_width="match_parent"

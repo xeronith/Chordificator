@@ -8,12 +8,12 @@ import android.widget.TextView;
 
 import java.util.List;
 
-public class ChordsAdapter extends RecyclerView.Adapter<ChordsAdapter.ViewHolder> {
+public class NotesRecyclerAdapter extends RecyclerView.Adapter<NotesRecyclerAdapter.ViewHolder> {
 
     private List<Note> items;
     private int itemLayout;
 
-    public ChordsAdapter(List<Note> items, int itemLayout) {
+    public NotesRecyclerAdapter(List<Note> items, int itemLayout) {
         this.items = items;
         this.itemLayout = itemLayout;
     }

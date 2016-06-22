@@ -6,5 +6,5 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:text="Major"
-    android:textSize="50sp"
+    android:textSize="@dimen/chord_type_text_size"
     app:customFont="BebasNeue.otf" />

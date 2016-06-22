@@ -6,8 +6,12 @@ import java.util.List;
 
 class Chordificator {
 
-    private static Note[] notes;
-    private final static int T = 2, S = 1;
+    private static final int T = 2, S = 1;
+
+    private static final Note[] notes;
+    public static Note[] getNotes() {
+        return notes;
+    }
 
     static {
         notes = new Note[]{
@@ -26,15 +30,51 @@ class Chordificator {
         };
     }
 
-    public static Note[] getNotes() {
-        return notes;
+    private static Note currentNote = notes[0];
+    private static Chord currentChord = Chord.Major;
+    private static Scale currentScale = Scale.Major;
+
+    public static Note getCurrentNote() {
+        return currentNote;
     }
 
-    public static List<Note> getScale(Scale scale, Note note) {
+    public static void setCurrentNote(Note currentNote) {
+        if(Chordificator.currentNote != currentNote) {
+            Chordificator.currentNote = currentNote;
+            if(Chordificator.chordificatorStateListener != null)
+                chordificatorStateListener.onStateChanged();
+        }
+    }
+
+    public static List<Note> getCurrentChord() {
+        return getChord();
+    }
+
+    public static void setCurrentChord(Chord currentChord) {
+        if(Chordificator.currentChord != currentChord) {
+            Chordificator.currentChord = currentChord;
+            if(Chordificator.chordificatorStateListener != null)
+                chordificatorStateListener.onStateChanged();
+        }
+    }
+
+    public static List<Note> getCurrentScale() {
+        return getScale();
+    }
+
+    public static void setCurrentScale(Scale currentScale) {
+        if(Chordificator.currentScale != currentScale) {
+            Chordificator.currentScale = currentScale;
+            if(Chordificator.chordificatorStateListener != null)
+                chordificatorStateListener.onStateChanged();
+        }
+    }
+
+    public static List<Note> getScale() {
 
         List<Integer> steps = new ArrayList<>();
 
-        switch (scale) {
+        switch (currentScale) {
             case Major:
                 steps.addAll(Arrays.asList(T, T, S, T, T, T, S));
                 break;
@@ -46,7 +86,7 @@ class Chordificator {
         int index = -1;
 
         for (int i = 0; i < notes.length; i++)
-            if (notes[i].getName().equals(note.getName()) || notes[i].getAlternativeName().equals(note.getAlternativeName())) {
+            if (notes[i].getName().equals(currentNote.getName()) || notes[i].getAlternativeName().equals(currentNote.getAlternativeName())) {
                 index = i;
                 break;
             }
@@ -61,13 +101,12 @@ class Chordificator {
 
         return result;
     }
+    public static List<Note> getChord() {
 
-    public static List<Note> getChord(Chord chord, Note note) {
-
-        List<Note> scale = getScale(Scale.Major, note);
+        List<Note> scale = getScale();
         List<Note> result = new ArrayList<>();
 
-        switch (chord) {
+        switch (currentChord) {
             case Major:
                 // 1 3 5
                 result.addAll(Arrays.asList(scale.get(0), scale.get(2), scale.get(4)));
@@ -104,8 +143,16 @@ class Chordificator {
 
         return result;
     }
-
     public static Chord[] getChordTypes() {
         return Chord.values();
+    }
+
+    private static IChordificatorStateListener chordificatorStateListener;
+    public static void setChordificatorStateListener(IChordificatorStateListener chordificatorStateListener) {
+        Chordificator.chordificatorStateListener = chordificatorStateListener;
+    }
+
+    public interface IChordificatorStateListener {
+        void onStateChanged();
     }
 }
