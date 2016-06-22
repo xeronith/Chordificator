@@ -1,1 +1,1 @@
-# Cordificator
+# Musical Scales & Chords Calculator
