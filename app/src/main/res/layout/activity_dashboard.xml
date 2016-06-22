@@ -19,33 +19,13 @@
         android:gravity="center"
         android:padding="10dp">
 
-        <TextView
-            style="@style/Note"
-            android:text="C" />
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView2"
+            android:overScrollMode="never"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
-        <TextView
-            style="@style/Note"
-            android:text="D" />
-
-        <TextView
-            style="@style/Note"
-            android:text="E" />
-
-        <TextView
-            style="@style/Note"
-            android:text="F" />
-
-        <TextView
-            style="@style/Note"
-            android:text="G" />
-
-        <TextView
-            style="@style/Note"
-            android:text="A" />
-
-        <TextView
-            style="@style/Note"
-            android:text="B" />
+        </android.support.v7.widget.RecyclerView>
 
     </LinearLayout>
 
@@ -57,6 +37,7 @@
         android:padding="15dp">
 
         <android.support.v7.widget.RecyclerView
+            android:overScrollMode="never"
             android:id="@+id/recyclerView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">

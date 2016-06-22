@@ -20,7 +20,7 @@ public class ChordsAdapter extends RecyclerView.Adapter<ChordsAdapter.ViewHolder
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(itemLayout, parent);
+        View view = LayoutInflater.from(parent.getContext()).inflate(itemLayout, parent, false);
         return new ViewHolder(view);
     }
 

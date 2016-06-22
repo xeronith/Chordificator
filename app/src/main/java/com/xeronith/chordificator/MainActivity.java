@@ -34,9 +34,11 @@ public class MainActivity extends AppCompatActivity {
 
         final ViewPager viewPager = (ViewPager)findViewById(R.id.viewPager);
         final RecyclerView recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
+        final RecyclerView recyclerView2 = (RecyclerView)findViewById(R.id.recyclerView2);
 
         assert viewPager != null;
         assert recyclerView != null;
+        assert recyclerView2 != null;
 
         viewPager.setAdapter(new PagerAdapter() {
             @Override
@@ -76,11 +78,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onPageSelected(int position) {
                 List<Note> notes = Chordificator.getChord(Chord.Major, Chordificator.getNotes()[position]);
-                recyclerView.setHasFixedSize(true);
                 recyclerView.setAdapter(new ChordsAdapter(notes, R.layout.template_chord));
-                recyclerView.setLayoutManager(new LinearLayoutManager(context));
-                recyclerView.setItemAnimator(new DefaultItemAnimator());
 
+                List<Note> scale = Chordificator.getScale(Scale.Major, Chordificator.getNotes()[position]);
+                recyclerView2.setAdapter(new ChordsAdapter(scale, R.layout.template_scale));
             }
 
             @Override
@@ -88,6 +89,21 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        recyclerView.setHasFixedSize(true);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
+        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+
+        recyclerView2.setHasFixedSize(true);
+        recyclerView2.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
+        recyclerView2.setItemAnimator(new DefaultItemAnimator());
+
+        List<Note> notes = Chordificator.getChord(Chord.Major, Chordificator.getNotes()[0]);
+        recyclerView.setAdapter(new ChordsAdapter(notes, R.layout.template_chord));
+
+        List<Note> scale = Chordificator.getScale(Scale.Major, Chordificator.getNotes()[0]);
+        recyclerView2.setAdapter(new ChordsAdapter(scale, R.layout.template_scale));
 
         /*final Button buttonChord = (Button)findViewById(R.id.buttonChord);
         final Button buttonScale = (Button)findViewById(R.id.buttonScale);
