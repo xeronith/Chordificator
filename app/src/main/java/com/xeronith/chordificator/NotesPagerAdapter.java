@@ -9,10 +9,12 @@ import android.widget.TextView;
 
 public class NotesPagerAdapter extends PagerAdapter {
 
-    private Note[] items;
+    private final Context context;
+    private final Note[] items;
     private final LayoutInflater layoutInflater;
 
     public NotesPagerAdapter(Context context) {
+        this.context = context;
         this.items = Chordificator.getNotes();
         this.layoutInflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
@@ -27,10 +29,16 @@ public class NotesPagerAdapter extends PagerAdapter {
     }
 
     @Override
-    public Object instantiateItem(ViewGroup container, int position) {
+    public Object instantiateItem(ViewGroup container, final int position) {
         View view = layoutInflater.inflate(R.layout.template_root_note, null);
         TextView textView = (TextView)view.findViewById(R.id.textView);
         textView.setText(items[position].getName());
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                items[position].play(context);
+            }
+        });
         container.addView(view);
         return view;
     }

@@ -1,5 +1,9 @@
 package com.xeronith.chordificator;
 
+import android.content.Context;
+import android.media.MediaPlayer;
+import android.os.AsyncTask;
+
 import java.util.Arrays;
 
 class Note {
@@ -45,6 +49,24 @@ class Note {
             return null;
         else
             return notes[(index + 1) % notes.length];
+    }
+
+    public void play(final Context context) {
+        new AsyncTask<Context, Void, Void>() {
+            @Override
+            protected Void doInBackground(Context... params) {
+                int id = context.getResources().getIdentifier(Note.this.name.replace('#', 's').toLowerCase(), "raw", context.getPackageName());
+                final MediaPlayer mediaPlayer = MediaPlayer.create(params[0], id);
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mediaPlayer.release();
+                    }
+                });
+                mediaPlayer.start();
+                return null;
+            }
+        }.execute(context);
     }
 
     @Override

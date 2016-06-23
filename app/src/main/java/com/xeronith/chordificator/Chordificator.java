@@ -18,14 +18,14 @@ class Chordificator {
                 new Note("C"),
                 new Note("C#", "Db"),
                 new Note("D"),
-                new Note("D#", "Eb"),
+                new Note("Eb", "D#"),
                 new Note("E"),
                 new Note("F"),
                 new Note("F#", "Gb"),
                 new Note("G"),
                 new Note("G#", "Ab"),
                 new Note("A"),
-                new Note("A#", "Bb"),
+                new Note("Bb", "A#"),
                 new Note("B")
         };
     }
