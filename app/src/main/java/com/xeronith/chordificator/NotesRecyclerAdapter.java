@@ -1,5 +1,6 @@
 package com.xeronith.chordificator;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,10 +11,12 @@ import java.util.List;
 
 public class NotesRecyclerAdapter extends RecyclerView.Adapter<NotesRecyclerAdapter.ViewHolder> {
 
-    private List<Note> items;
-    private int itemLayout;
+    private final Context context;
+    private final List<Note> items;
+    private final int itemLayout;
 
-    public NotesRecyclerAdapter(List<Note> items, int itemLayout) {
+    public NotesRecyclerAdapter(Context context, List<Note> items, int itemLayout) {
+        this.context = context;
         this.items = items;
         this.itemLayout = itemLayout;
     }
@@ -26,8 +29,14 @@ public class NotesRecyclerAdapter extends RecyclerView.Adapter<NotesRecyclerAdap
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Note item = items.get(position);
-        holder.text.setText(item.getName());
+        final Note note = items.get(position);
+        holder.text.setText(note.getName());
+        holder.text.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                note.play(context);
+            }
+        });
     }
 
     @Override

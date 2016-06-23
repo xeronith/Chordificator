@@ -1,5 +1,6 @@
 package com.xeronith.chordificator;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +15,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        final Context context = this;
 
         final ViewPager viewPagerNote = (ViewPager) findViewById(R.id.viewPagerNote);
         final ViewPager viewPagerChord = (ViewPager) findViewById(R.id.viewPagerChord);
@@ -36,14 +39,14 @@ public class MainActivity extends AppCompatActivity {
 
         setupRecyclerViews(recyclerViewScale, recyclerViewChord);
 
-        recyclerViewScale.setAdapter(new NotesRecyclerAdapter(Chordificator.getCurrentScale(), R.layout.template_scale_note));
-        recyclerViewChord.setAdapter(new NotesRecyclerAdapter(Chordificator.getCurrentChord(), R.layout.template_chord_note));
+        recyclerViewScale.setAdapter(new NotesRecyclerAdapter(context, Chordificator.getCurrentScale(), R.layout.template_scale_note));
+        recyclerViewChord.setAdapter(new NotesRecyclerAdapter(context, Chordificator.getCurrentChord(), R.layout.template_chord_note));
 
         Chordificator.setChordificatorStateListener(new Chordificator.IChordificatorStateListener() {
             @Override
             public void onStateChanged() {
-                recyclerViewScale.setAdapter(new NotesRecyclerAdapter(Chordificator.getCurrentScale(), R.layout.template_scale_note));
-                recyclerViewChord.setAdapter(new NotesRecyclerAdapter(Chordificator.getCurrentChord(), R.layout.template_chord_note));
+                recyclerViewScale.setAdapter(new NotesRecyclerAdapter(context, Chordificator.getCurrentScale(), R.layout.template_scale_note));
+                recyclerViewChord.setAdapter(new NotesRecyclerAdapter(context, Chordificator.getCurrentChord(), R.layout.template_chord_note));
             }
         });
     }

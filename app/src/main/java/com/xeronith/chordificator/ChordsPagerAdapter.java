@@ -9,10 +9,12 @@ import android.widget.TextView;
 
 public class ChordsPagerAdapter extends PagerAdapter {
 
-    private Chord[] items;
+    private final Context context;
+    private final Chord[] items;
     private final LayoutInflater layoutInflater;
 
     public ChordsPagerAdapter(Context context) {
+        this.context = context;
         this.items = Chordificator.getChordTypes();
         this.layoutInflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
@@ -27,7 +29,7 @@ public class ChordsPagerAdapter extends PagerAdapter {
     }
 
     @Override
-    public Object instantiateItem(ViewGroup container, int position) {
+    public Object instantiateItem(ViewGroup container, final int position) {
         TextView view = (TextView)layoutInflater.inflate(R.layout.template_chord_type, null);
         view.setText(items[position].getName());
         container.addView(view);
