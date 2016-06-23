@@ -42,27 +42,12 @@ public class NotesPagerAdapter extends PagerAdapter {
                 items[position].play(context);
                 textView.animate()
                         .setInterpolator(new DecelerateInterpolator())
-                        .setDuration(750)
-                        .rotationY(180)
-                        .scaleX(.8f)
-                        .scaleY(.8f)
-                        .alpha(.5f)
+                        .setDuration(500)
+                        .rotationY(360)
                         .withEndAction(new Runnable() {
                             @Override
                             public void run() {
-                                textView.animate()
-                                        .setInterpolator(new AccelerateInterpolator())
-                                        .setDuration(750)
-                                        .rotationY(360)
-                                        .scaleX(1)
-                                        .scaleY(1)
-                                        .alpha(1)
-                                        .withEndAction(new Runnable() {
-                                            @Override
-                                            public void run() {
-                                                textView.setRotationY(0);
-                                            }
-                                        });
+                                textView.setRotationY(0);
                             }
                         });
             }
