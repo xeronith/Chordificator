@@ -11,7 +11,7 @@
         android:gravity="center"
         android:padding="@dimen/main_title_padding"
         android:text="Chordificator"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/colorSecondary"
         android:textSize="@dimen/main_title_text_size"
         app:customFont="marguerite.ttf" />
 

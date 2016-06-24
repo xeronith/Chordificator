@@ -1,6 +1,7 @@
 package com.xeronith.chordificator;
 
 import android.content.Context;
+import android.os.Handler;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -72,10 +73,30 @@ class Chordificator {
         }
     }
 
-    public static void playChord(Context context) {
-        for(Note note : getCurrentChord())
-            note.play(context);
+    public static void playScale(Context context) {
+        List<Note> notes = getCurrentScale();
+        playSingleNote(notes, 0, context, 150);
     }
+
+    public static void playChord(Context context) {
+        List<Note> notes = getCurrentChord();
+        playSingleNote(notes, 0, context, 50);
+    }
+
+    private static void playSingleNote(final List<Note> notes, final int current, final Context context, final int interval) {
+        if(current >= notes.size())
+            return;
+
+        notes.get(current).play(context);
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                playSingleNote(notes, current + 1, context, interval);
+            }
+        }, interval);
+    }
+
 
     public static List<Note> getScale() {
 

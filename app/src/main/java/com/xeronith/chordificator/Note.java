@@ -52,21 +52,15 @@ class Note {
     }
 
     public void play(final Context context) {
-        new AsyncTask<Context, Void, Void>() {
+        int id = context.getResources().getIdentifier(Note.this.name.replace('#', 's').toLowerCase(), "raw", context.getPackageName());
+        final MediaPlayer mediaPlayer = MediaPlayer.create(context, id);
+        mediaPlayer.start();
+        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
-            protected Void doInBackground(Context... params) {
-                int id = context.getResources().getIdentifier(Note.this.name.replace('#', 's').toLowerCase(), "raw", context.getPackageName());
-                final MediaPlayer mediaPlayer = MediaPlayer.create(params[0], id);
-                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                    @Override
-                    public void onCompletion(MediaPlayer mp) {
-                        mediaPlayer.release();
-                    }
-                });
-                mediaPlayer.start();
-                return null;
+            public void onCompletion(MediaPlayer mp) {
+                mediaPlayer.release();
             }
-        }.execute(context);
+        });
     }
 
     @Override

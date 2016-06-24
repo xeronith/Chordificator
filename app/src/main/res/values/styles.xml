@@ -1,11 +1,12 @@
 <resources>
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@color/colorPrimaryDarker</item>
+        <item name="android:textColor">#fff</item>
     </style>
     <style name="Note">
-        <item name="android:textColor">@android:color/white</item>
         <item name="android:layout_width">@dimen/note_size</item>
         <item name="android:layout_height">@dimen/note_size</item>
         <item name="android:background">@drawable/background_round</item>

@@ -10,19 +10,22 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
+import android.view.View;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    private GestureDetectorCompat gestureDetector;
+    private Context context;
+
+    private GestureDetectorCompat chordGestureDetector;
+    private GestureDetectorCompat scaleGestureDetector;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        this.gestureDetector = new GestureDetectorCompat(this, new GestureListener());
 
-        final Context context = this;
+        this.context = this;
 
         final ViewPager viewPagerNote = (ViewPager) findViewById(R.id.viewPagerNote);
         final ViewPager viewPagerChord = (ViewPager) findViewById(R.id.viewPagerChord);
@@ -48,6 +51,25 @@ public class MainActivity extends AppCompatActivity {
         recyclerViewScale.setAdapter(new NotesRecyclerAdapter(context, Chordificator.getCurrentScale(), R.layout.template_scale_note));
         recyclerViewChord.setAdapter(new NotesRecyclerAdapter(context, Chordificator.getCurrentChord(), R.layout.template_chord_note));
 
+        this.chordGestureDetector = new GestureDetectorCompat(this, new GestureListener(recyclerViewChord));
+        this.scaleGestureDetector = new GestureDetectorCompat(this, new GestureListener(recyclerViewScale));
+
+        recyclerViewScale.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                scaleGestureDetector.onTouchEvent(event);
+                return false;
+            }
+        });
+
+        recyclerViewChord.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                chordGestureDetector.onTouchEvent(event);
+                return false;
+            }
+        });
+
         Chordificator.setChordificatorStateListener(new Chordificator.IChordificatorStateListener() {
             @Override
             public void onStateChanged() {
@@ -69,18 +91,22 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
     }
 
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        this.gestureDetector.onTouchEvent(event);
-        return super.onTouchEvent(event);
-    }
-
     class GestureListener extends GestureDetector.SimpleOnGestureListener {
-        private static final String TAG = "Gestures";
+
+        private final View view;
+
+        public GestureListener(View view) {
+            this.view = view;
+        }
 
         @Override
         public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-            toast("Fling detected.");
+
+            if(view.getId() == R.id.recyclerViewChord)
+                Chordificator.playChord(context);
+            else if(view.getId() == R.id.recyclerViewScale)
+                Chordificator.playScale(context);
+
             return super.onFling(e1, e2, velocityX, velocityY);
         }
     }
