@@ -4,4 +4,4 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/textView"
     style="@style/BigNote"
-    app:customFont="CaviarDreams.ttf" />
+    app:customFont="Champagne.ttf" />
