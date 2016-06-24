@@ -2,19 +2,25 @@ package com.xeronith.chordificator;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.view.GestureDetectorCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+
+    private GestureDetectorCompat gestureDetector;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        this.gestureDetector = new GestureDetectorCompat(this, new GestureListener());
 
         final Context context = this;
 
@@ -61,5 +67,21 @@ public class MainActivity extends AppCompatActivity {
 
     private void toast(String text) {
         Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        this.gestureDetector.onTouchEvent(event);
+        return super.onTouchEvent(event);
+    }
+
+    class GestureListener extends GestureDetector.SimpleOnGestureListener {
+        private static final String TAG = "Gestures";
+
+        @Override
+        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+            toast("Fling detected.");
+            return super.onFling(e1, e2, velocityX, velocityY);
+        }
     }
 }
