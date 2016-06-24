@@ -20,6 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
+        android:paddingBottom="30dp"
         android:overScrollMode="never">
 
     </android.support.v4.view.ViewPager>
@@ -27,7 +28,7 @@
     <android.support.v4.view.ViewPager
         android:id="@+id/viewPagerChord"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="90dp"
         android:overScrollMode="never">
 
     </android.support.v4.view.ViewPager>

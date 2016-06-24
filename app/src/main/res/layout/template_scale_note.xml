@@ -4,5 +4,4 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/textView"
     style="@style/Note"
-    android:textAllCaps="true"
-    app:customFont="BebasNeue.otf" />
+    app:customFont="CaviarDreams.ttf" />

@@ -1,10 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<com.xeronith.chordificator.TextViewWithFont xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:text="Major"
-    android:textSize="@dimen/chord_type_text_size"
-    app:customFont="BebasNeue.otf" />
+    android:orientation="vertical">
+
+    <com.xeronith.chordificator.TextViewWithFont
+        android:id="@+id/textViewTitle"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="Major"
+        android:textAllCaps="true"
+        android:textSize="@dimen/chord_type_text_size"
+        app:customFont="CaviarDreams.ttf" />
+
+    <com.xeronith.chordificator.TextViewWithFont
+        android:id="@+id/textViewSubtitle"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:paddingTop="3dp"
+        android:text="Major"
+        android:alpha=".5"
+        android:textSize="@dimen/chord_type_sub_text_size"
+        app:customFont="CaviarDreams.ttf" />
+</LinearLayout>
