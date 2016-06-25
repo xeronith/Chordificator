@@ -2,6 +2,7 @@ package com.xeronith.chordificator;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.design.widget.BottomSheetBehavior;
 import android.support.v4.view.GestureDetectorCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -20,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private GestureDetectorCompat chordGestureDetector;
     private GestureDetectorCompat scaleGestureDetector;
 
-
+    private BottomSheetBehavior<LinearLayout> behavior;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
         final ViewPager viewPagerChord = (ViewPager) findViewById(R.id.viewPagerChord);
         final RecyclerView recyclerViewScale = (RecyclerView) findViewById(R.id.recyclerViewScale);
         final RecyclerView recyclerViewChord = (RecyclerView) findViewById(R.id.recyclerViewChord);
+
+        behavior = BottomSheetBehavior.from((LinearLayout)findViewById(R.id.bottom_sheet));
 
         assert viewPagerNote != null;
         assert viewPagerChord != null;
