@@ -12,10 +12,9 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:gravity="center"
-        android:text="Major"
         android:textAllCaps="true"
         android:textSize="@dimen/chord_type_text_size"
-        app:customFont="Champagne.ttf" />
+        app:customFont="@string/custom_font" />
 
     <com.xeronith.chordificator.TextViewWithFont
         android:id="@+id/textViewSubtitle"
@@ -24,8 +23,7 @@
         android:layout_weight="1"
         android:gravity="center_horizontal"
         android:paddingTop="3dp"
-        android:text="Major"
         android:alpha=".6"
         android:textSize="@dimen/chord_type_sub_text_size"
-        app:customFont="Champagne.ttf" />
+        app:customFont="@string/custom_font" />
 </LinearLayout>
