@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Chordificator</string>
     <string name="custom_font">TypoGraphica.otf</string>
+    <string name="lorem">
+Lorem ipsum dolor sit amet, ne ius regione perfecto repudiare, vix at saepe dignissim torquatos. Decore dignissim vulputate vis ut, sit nostro vidisse graecis ea. Nobis persecuti has ut. Te idque omnium albucius vel, et eum cibo dicat.
+    </string>
 </resources>

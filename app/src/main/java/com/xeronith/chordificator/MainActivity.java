@@ -9,10 +9,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -36,7 +38,9 @@ public class MainActivity extends AppCompatActivity {
         final RecyclerView recyclerViewScale = (RecyclerView) findViewById(R.id.recyclerViewScale);
         final RecyclerView recyclerViewChord = (RecyclerView) findViewById(R.id.recyclerViewChord);
 
+        ((TextView) findViewById(R.id.dialogue)).setText(TextUtils.concat(getString(R.string.lorem)));
         behavior = BottomSheetBehavior.from((LinearLayout)findViewById(R.id.bottom_sheet));
+
 
         assert viewPagerNote != null;
         assert viewPagerChord != null;

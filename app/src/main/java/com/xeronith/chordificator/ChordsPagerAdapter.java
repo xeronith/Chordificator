@@ -33,13 +33,10 @@ public class ChordsPagerAdapter extends PagerAdapter {
         View view = layoutInflater.inflate(R.layout.template_chord_type, null);
 
         final TextView textViewTitle = (TextView) view.findViewById(R.id.textViewTitle);
-        final TextView textViewSubtitle = (TextView) view.findViewById(R.id.textViewSubtitle);
 
         assert textViewTitle != null;
-        assert textViewSubtitle != null;
 
         textViewTitle.setText(items[position].getName());
-        textViewSubtitle.setText(items[position].getFormula());
 
         container.addView(view);
 
