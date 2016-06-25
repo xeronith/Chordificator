@@ -20,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
     private GestureDetectorCompat chordGestureDetector;
     private GestureDetectorCompat scaleGestureDetector;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
