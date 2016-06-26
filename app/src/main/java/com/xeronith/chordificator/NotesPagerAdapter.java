@@ -5,9 +5,7 @@ import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
-import android.view.animation.LinearInterpolator;
 import android.widget.TextView;
 
 public class NotesPagerAdapter extends PagerAdapter {
@@ -33,7 +31,7 @@ public class NotesPagerAdapter extends PagerAdapter {
 
     @Override
     public Object instantiateItem(ViewGroup container, final int position) {
-        View view = layoutInflater.inflate(R.layout.template_root_note, null);
+        View view = layoutInflater.inflate(R.layout.template_root_note, container, false);
         final TextView textView = (TextView) view.findViewById(R.id.textView);
         textView.setText(items[position].getName());
         textView.setOnClickListener(new View.OnClickListener() {
