@@ -10,6 +10,7 @@
         style="@style/Note"
         android:layout_width="@dimen/root_note_size"
         android:layout_height="@dimen/root_note_size"
+        android:gravity="center"
         android:textSize="@dimen/root_note_text_size"
         app:customFont="@string/custom_font" />
 

@@ -2,7 +2,7 @@ package com.xeronith.chordificator;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.design.widget.BottomSheetBehavior;
+//import android.support.design.widget.BottomSheetBehavior;
 import android.support.v4.view.GestureDetectorCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -15,7 +15,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private GestureDetectorCompat chordGestureDetector;
     private GestureDetectorCompat scaleGestureDetector;
 
-    private BottomSheetBehavior<LinearLayout> behavior;
+    //private BottomSheetBehavior<LinearLayout> behavior;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,15 +36,18 @@ public class MainActivity extends AppCompatActivity {
         final ViewPager viewPagerChord = (ViewPager) findViewById(R.id.viewPagerChord);
         final RecyclerView recyclerViewScale = (RecyclerView) findViewById(R.id.recyclerViewScale);
         final RecyclerView recyclerViewChord = (RecyclerView) findViewById(R.id.recyclerViewChord);
-
-        ((TextView) findViewById(R.id.dialogue)).setText(TextUtils.concat(getString(R.string.lorem)));
-        behavior = BottomSheetBehavior.from((LinearLayout) findViewById(R.id.bottom_sheet));
-
+        final LinearLayout linearLayoutBottomSheet = (LinearLayout)findViewById(R.id.bottom_sheet);
+        final TextView textViewDialogue = (TextView)findViewById(R.id.dialogue);
 
         assert viewPagerNote != null;
         assert viewPagerChord != null;
         assert recyclerViewScale != null;
         assert recyclerViewChord != null;
+        assert linearLayoutBottomSheet != null;
+        assert textViewDialogue != null;
+
+        textViewDialogue.setText(TextUtils.concat(getString(R.string.lorem)));
+        //behavior = BottomSheetBehavior.from(linearLayoutBottomSheet);
 
         final NotesPagerAdapter notesPagerAdapter = new NotesPagerAdapter(this);
         final ChordsPagerAdapter chordsPagerAdapter = new ChordsPagerAdapter(this);
@@ -55,6 +57,10 @@ public class MainActivity extends AppCompatActivity {
 
         viewPagerNote.addOnPageChangeListener(new NoteChangeListener(notesPagerAdapter));
         viewPagerChord.addOnPageChangeListener(new ChordChangeListener(chordsPagerAdapter));
+
+        viewPagerNote.setClipToPadding(false);
+        viewPagerNote.setPadding(130, 0, 130, 0);
+        viewPagerNote.setPageMargin(20);
 
         setupRecyclerViews(recyclerViewScale, recyclerViewChord);
 
@@ -95,10 +101,6 @@ public class MainActivity extends AppCompatActivity {
             recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
             recyclerView.setItemAnimator(new DefaultItemAnimator());
         }
-    }
-
-    private void toast(String text) {
-        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
     }
 
     class GestureListener extends GestureDetector.SimpleOnGestureListener {

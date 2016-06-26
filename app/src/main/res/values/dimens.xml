@@ -4,7 +4,7 @@
     <dimen name="main_title_text_size">30sp</dimen>
     <dimen name="note_text_size">15sp</dimen>
     <dimen name="note_size">35dp</dimen>
-    <dimen name="chord_type_text_size">40sp</dimen>
+    <dimen name="chord_type_text_size">30sp</dimen>
     <dimen name="chord_type_sub_text_size">20sp</dimen>
     <dimen name="root_note_text_size">80sp</dimen>
     <dimen name="root_note_size">200dp</dimen>
