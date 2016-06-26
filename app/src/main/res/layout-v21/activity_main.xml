@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:padding="@dimen/main_title_padding"
-            android:text="Chordificator"
+            android:text="@string/app_name"
             android:textSize="@dimen/main_title_text_size"
             app:customFont="marguerite.ttf" />
 

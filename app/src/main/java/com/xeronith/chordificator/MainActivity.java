@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         final RecyclerView recyclerViewChord = (RecyclerView) findViewById(R.id.recyclerViewChord);
 
         ((TextView) findViewById(R.id.dialogue)).setText(TextUtils.concat(getString(R.string.lorem)));
-        behavior = BottomSheetBehavior.from((LinearLayout)findViewById(R.id.bottom_sheet));
+        behavior = BottomSheetBehavior.from((LinearLayout) findViewById(R.id.bottom_sheet));
 
 
         assert viewPagerNote != null;
@@ -112,9 +112,9 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
 
-            if(view.getId() == R.id.recyclerViewChord)
+            if (view.getId() == R.id.recyclerViewChord)
                 Chordificator.playChord(context);
-            else if(view.getId() == R.id.recyclerViewScale)
+            else if (view.getId() == R.id.recyclerViewScale)
                 Chordificator.playScale(context);
 
             return super.onFling(e1, e2, velocityX, velocityY);
