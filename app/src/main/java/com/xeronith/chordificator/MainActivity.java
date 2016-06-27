@@ -58,10 +58,6 @@ public class MainActivity extends AppCompatActivity {
         viewPagerNote.addOnPageChangeListener(new NoteChangeListener(notesPagerAdapter));
         viewPagerChord.addOnPageChangeListener(new ChordChangeListener(chordsPagerAdapter));
 
-        viewPagerNote.setClipToPadding(false);
-        viewPagerNote.setPadding(130, 0, 130, 0);
-        viewPagerNote.setPageMargin(20);
-
         setupRecyclerViews(recyclerViewScale, recyclerViewChord);
 
         recyclerViewScale.setAdapter(new NotesRecyclerAdapter(context, Chordificator.getCurrentScale(), R.layout.template_scale_note));

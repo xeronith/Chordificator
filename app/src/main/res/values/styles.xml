@@ -4,12 +4,11 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowBackground">@color/colorPrimary</item>
-        <item name="android:textColor">#eee</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
     </style>
     <style name="Note">
         <item name="android:layout_width">@dimen/note_size</item>
         <item name="android:layout_height">@dimen/note_size</item>
-        <item name="android:background">@drawable/background_round</item>
         <item name="android:layout_margin">5dp</item>
         <item name="android:gravity">center</item>
         <item name="android:textColor">@color/colorSecondary</item>
