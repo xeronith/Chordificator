@@ -1,8 +1,9 @@
 package com.xeronith.chordificator;
 
 import android.content.Context;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-//import android.support.design.widget.BottomSheetBehavior;
+import android.support.design.widget.BottomSheetBehavior;
 import android.support.v4.view.GestureDetectorCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -16,6 +17,8 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.xeronith.chordificator.databinding.ActivityMainBinding;
+
 public class MainActivity extends AppCompatActivity {
 
     private Context context;
@@ -23,31 +26,25 @@ public class MainActivity extends AppCompatActivity {
     private GestureDetectorCompat chordGestureDetector;
     private GestureDetectorCompat scaleGestureDetector;
 
-    //private BottomSheetBehavior<LinearLayout> behavior;
+    private BottomSheetBehavior<LinearLayout> bottomSheetBehavior;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        binding.setMainViewModel(MainViewModel.get(getString(R.string.app_name)));
 
         this.context = this;
 
-        final ViewPager viewPagerNote = (ViewPager) findViewById(R.id.viewPagerNote);
-        final ViewPager viewPagerChord = (ViewPager) findViewById(R.id.viewPagerChord);
-        final RecyclerView recyclerViewScale = (RecyclerView) findViewById(R.id.recyclerViewScale);
-        final RecyclerView recyclerViewChord = (RecyclerView) findViewById(R.id.recyclerViewChord);
-        final LinearLayout linearLayoutBottomSheet = (LinearLayout)findViewById(R.id.bottom_sheet);
-        final TextView textViewDialogue = (TextView)findViewById(R.id.dialogue);
-
-        assert viewPagerNote != null;
-        assert viewPagerChord != null;
-        assert recyclerViewScale != null;
-        assert recyclerViewChord != null;
-        assert linearLayoutBottomSheet != null;
-        assert textViewDialogue != null;
+        final ViewPager viewPagerNote = binding.viewPagerNote;
+        final ViewPager viewPagerChord = binding.viewPagerChord;
+        final RecyclerView recyclerViewScale = binding.recyclerViewScale;
+        final RecyclerView recyclerViewChord = binding.recyclerViewChord;
+        final LinearLayout linearLayoutBottomSheet = binding.linearLayoutBottomSheet;
+        final TextView textViewDialogue = binding.textViewDialogue;
 
         textViewDialogue.setText(TextUtils.concat(getString(R.string.lorem)));
-        //behavior = BottomSheetBehavior.from(linearLayoutBottomSheet);
+        bottomSheetBehavior = BottomSheetBehavior.from(linearLayoutBottomSheet);
 
         final NotesPagerAdapter notesPagerAdapter = new NotesPagerAdapter(this);
         final ChordsPagerAdapter chordsPagerAdapter = new ChordsPagerAdapter(this);
@@ -93,6 +90,14 @@ public class MainActivity extends AppCompatActivity {
                 recyclerViewChord.setAdapter(new NotesRecyclerAdapter(context, Chordificator.getCurrentChord(), R.layout.template_chord_note));
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (bottomSheetBehavior != null && bottomSheetBehavior.getState() != BottomSheetBehavior.STATE_COLLAPSED)
+            bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+        else
+            super.onBackPressed();
     }
 
     private void setupRecyclerViews(RecyclerView... recyclerViews) {

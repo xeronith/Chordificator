@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-<com.xeronith.chordificator.TextViewWithFont xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/textView"
-    style="@style/Note"
-    android:layout_gravity="center"
-    android:paddingTop="1dp"
-    android:gravity="center"
-    app:customFont="@string/custom_font" />
+    <com.xeronith.chordificator.TextViewWithFont
+        android:id="@+id/textView"
+        style="@style/Note"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:paddingTop="1dp"
+        app:customFont="@string/custom_font" />
+</layout>

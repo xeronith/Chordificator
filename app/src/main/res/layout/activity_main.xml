@@ -1,93 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/coordinatorLayout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
+    <data>
+
+        <variable
+            name="mainViewModel"
+            type="com.xeronith.chordificator.MainViewModel" />
+    </data>
+
+    <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/coordinatorLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:paddingBottom="168dp">
+        android:layout_height="match_parent">
 
-        <com.xeronith.chordificator.TextViewWithFont
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:padding="@dimen/main_title_padding"
-            android:text="@string/app_name"
-            android:textSize="@dimen/main_title_text_size"
-            app:customFont="marguerite.ttf" />
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingBottom="168dp">
 
-        <android.support.v4.view.ViewPager
-            android:id="@+id/viewPagerNote"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:overScrollMode="never"
-            tools:listitem="@layout/template_root_note">
-
-        </android.support.v4.view.ViewPager>
-
-        <android.support.v4.view.ViewPager
-            android:id="@+id/viewPagerChord"
-            android:layout_width="match_parent"
-            android:layout_height="90dp"
-            android:overScrollMode="never">
-
-        </android.support.v4.view.ViewPager>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/bottom_sheet"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorPrimaryDark"
-        android:gravity="center_horizontal"
-        android:minHeight="168dp"
-        android:orientation="vertical"
-        app:behavior_peekHeight="168dp"
-        app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
-
-        <include layout="@layout/template_divider" />
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerViewScale"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:overScrollMode="never"
-            android:padding="10dp"
-            tools:listitem="@layout/template_scale_note">
-
-        </android.support.v7.widget.RecyclerView>
-
-        <include layout="@layout/template_divider" />
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerViewChord"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:overScrollMode="never"
-            android:padding="15dp">
-
-        </android.support.v7.widget.RecyclerView>
-
-        <android.support.v4.widget.NestedScrollView
-            android:id="@+id/scroll"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/dialogue"
+            <com.xeronith.chordificator.TextViewWithFont
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="20dp"
-                android:textSize="20sp" />
+                android:gravity="center"
+                android:padding="@dimen/main_title_padding"
+                android:text="@{mainViewModel.appTitle}"
+                android:textSize="@dimen/main_title_text_size"
+                app:customFont="marguerite.ttf" />
 
-        </android.support.v4.widget.NestedScrollView>
-    </LinearLayout>
+            <android.support.v4.view.ViewPager
+                android:id="@+id/viewPagerNote"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:overScrollMode="never"
+                tools:listitem="@layout/template_root_note">
 
-</android.support.design.widget.CoordinatorLayout>
+            </android.support.v4.view.ViewPager>
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/viewPagerChord"
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:overScrollMode="never">
+
+            </android.support.v4.view.ViewPager>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutBottomSheet"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimaryDark"
+            android:gravity="center_horizontal"
+            android:minHeight="168dp"
+            android:orientation="vertical"
+            app:behavior_peekHeight="168dp"
+            app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
+
+            <include layout="@layout/template_divider" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerViewScale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:overScrollMode="never"
+                android:padding="10dp"
+                tools:listitem="@layout/template_scale_note">
+
+            </android.support.v7.widget.RecyclerView>
+
+            <include layout="@layout/template_divider" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerViewChord"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:overScrollMode="never"
+                android:padding="15dp">
+
+            </android.support.v7.widget.RecyclerView>
+
+            <android.support.v4.widget.NestedScrollView
+                android:id="@+id/scroll"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textViewDialogue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="20dp"
+                    android:textSize="20sp" />
+
+            </android.support.v4.widget.NestedScrollView>
+        </LinearLayout>
+
+    </android.support.design.widget.CoordinatorLayout>
+</layout>

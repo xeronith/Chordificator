@@ -1,12 +1,15 @@
 package com.xeronith.chordificator;
 
 import android.content.Context;
+import android.databinding.DataBindingUtil;
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.TextView;
+
+import com.xeronith.chordificator.databinding.TemplateRootNoteBinding;
 
 public class NotesPagerAdapter extends PagerAdapter {
 
@@ -31,8 +34,8 @@ public class NotesPagerAdapter extends PagerAdapter {
 
     @Override
     public Object instantiateItem(ViewGroup container, final int position) {
-        View view = layoutInflater.inflate(R.layout.template_root_note, container, false);
-        final TextView textView = (TextView) view.findViewById(R.id.textView);
+        TemplateRootNoteBinding binding = DataBindingUtil.inflate(layoutInflater, R.layout.template_root_note, container, false);
+        final TextView textView = binding.textView;
         textView.setText(items[position].getName());
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,8 +53,9 @@ public class NotesPagerAdapter extends PagerAdapter {
                         });
             }
         });
-        container.addView(view);
-        return view;
+
+        container.addView(binding.getRoot());
+        return binding.getRoot();
     }
 
     @Override
