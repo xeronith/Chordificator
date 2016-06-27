@@ -1,7 +1,6 @@
 package com.xeronith.chordificator;
 
 import android.content.Context;
-import android.databinding.DataBindingUtil;
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,7 +29,7 @@ public class ChordsPagerAdapter extends PagerAdapter {
 
     @Override
     public Object instantiateItem(ViewGroup container, final int position) {
-        TemplateChordTypeBinding binding = DataBindingUtil.inflate(layoutInflater, R.layout.template_chord_type, container, false);
+        TemplateChordTypeBinding binding = TemplateChordTypeBinding.inflate(layoutInflater, container, false);
         binding.textViewTitle.setText(items[position].getName());
         container.addView(binding.getRoot());
         return binding.getRoot();
