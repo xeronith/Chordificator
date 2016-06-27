@@ -31,8 +31,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        final MainViewModel viewModel = MainViewModel.get(getString(R.string.app_name));
+
         ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        binding.setMainViewModel(MainViewModel.get(getString(R.string.app_name)));
+        binding.setMainViewModel(viewModel);
 
         this.context = this;
 
