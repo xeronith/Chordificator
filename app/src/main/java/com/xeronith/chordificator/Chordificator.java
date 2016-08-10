@@ -168,6 +168,10 @@ class Chordificator {
                 // 1 3b 5b 7bb
                 result.addAll(Arrays.asList(scale.get(0), scale.get(2).flat(), scale.get(4).flat(), scale.get(6).flat().flat()));
                 break;
+            case Blues:
+                // 1 3b 4 5b 5 7b
+                result.addAll(Arrays.asList(scale.get(0), scale.get(2).flat(), scale.get(3), scale.get(4).flat(), scale.get(4), scale.get(6).flat()));
+                break;
         }
 
         return result;

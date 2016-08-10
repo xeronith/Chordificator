@@ -8,7 +8,8 @@ public enum Chord {
     Major7th("Major 7th", "1 - 3 - 5 - 7"),
     Minor7th("Minor 7th", "1 - 3b - 5 - 7b"),
     Dominant7th("Dominant 7th", "1 - 3 - 5 - 7b"),
-    Diminished7th("Diminished 7th", "1 - 3b - 5b - 7bb");
+    Diminished7th("Diminished 7th", "1 - 3b - 5b - 7bb"),
+    Blues("Blues", "1 - 3b - 4 - 5b - 5 - 7b");
 
     private final String name;
     private final String formula;
